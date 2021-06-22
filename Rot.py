@@ -12,6 +12,8 @@ Args = Parser.parse_args()
 Message = Args.m
 N = Args.N
 
+
+
 class Color:
     'Class for Colors to be used in Execution'
     PURPLE = '\033[95m'
@@ -52,23 +54,25 @@ class Decrypt:
    def __init__(self,Message,N):
       self.Message = Message
       self.N = N
-      self.TranslatedList = []
 
    def Bruteforce(self):
+      TranslatedList = []
       for key in range(0,25): 
-
          for character in Message:
             Translated = ""
-            if character.lower() in string.ascii_lowercase:
-               num = ord(character) + key
+
+            if character.isalpha():
+               num = ord(character)
+               num += key
                if num < 0:
                   num = num + 26
                Translated += string.ascii_lowercase[num]
             else:
                Translated += character    
-            TranslatedList.extend([f"{key}",f"{Translated}"]) 
+
+            TranslatedList.append([f"{key}",f"{Translated}"]) 
       for _ in TranslatedList:
-         print(_)
+         Notify.Info(f"{_[0].rjust(3)} : {_[1]}")
 
    def Standard(self):
       print("x")
