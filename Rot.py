@@ -57,31 +57,31 @@ class Decrypt:
 
    def Bruteforce(self):
       TranslatedList = []
-      for key in range(0,25): 
-         for character in Message:
-            Translated = ""
+      for key in range(0,26): 
+         Translated = ""
+         for char in str(Message):
 
-            if character.isalpha():
-               num = ord(character)
-               num += key
-               if num < 0:
-                  num = num + 26
+            if char.isalpha():
+               num = ord(char) + key
+               num = num % 26
                Translated += string.ascii_lowercase[num]
             else:
-               Translated += character    
+               Translated += char    
 
-            TranslatedList.append([f"{key}",f"{Translated}"]) 
+         TranslatedList.append([f"{key}",f"{Translated}"]) 
       for _ in TranslatedList:
-         Notify.Info(f"{_[0].rjust(3)} : {_[1]}")
+         key = _[0].rjust(2)
+         value = str(_[1])
+         Notify.Info(f"{key} : {value}")
 
    def Standard(self):
       print("x")
 
 
 def Main(Message,N):
-   D = Decrypt(Message,N)
    if Message:
       Message = " ".join(Message)
+   D = Decrypt(Message,N)
    if Args.B:
       D.Bruteforce()
    else:
