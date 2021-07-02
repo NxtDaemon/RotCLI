@@ -50,7 +50,7 @@ class Notify():
 
 
 def GetLetter(List,char,key):
-   x = (List.index(char) + key) % 26
+   x = (List.index(char) - key) % 26
    Letter = List[x]
    return(Letter)
 
