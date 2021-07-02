@@ -4,7 +4,7 @@ import string
 # Argparse setup 
 Parser = argparse.ArgumentParser()
 Parser.add_argument("-m",help="pass the Message to run through the rotational cipher",nargs="+",required=True)
-Parser.add_argument("-N",help="Pass the N-rotational value [Default is 13]",default=13)
+Parser.add_argument("-N",help="Pass the N-rotational value [Default is 13]",default=13,type=int)
 Parser.add_argument("-B",help="Switch for bruteforce the N-val",action='store_true')
 
 # Move a argparse value into a stored variable
@@ -48,10 +48,19 @@ class Notify():
       'Get infomation from user'
       input(f"{Color.QuestionColor}[?] - {Message}{Color.RESET}")
 
+
+def GetLetter(List,char,key):
+   x = (List.index(char) + key) % 26
+   Letter = List[x]
+   return(Letter)
+
+
 class Decrypt:
+   'Class for decrypting rotational ciphers'
    def __init__(self,Message,N):
+      'init message and N-value'
       self.Message = Message
-      self.N = N
+      self.N = N % 26
 
    def Bruteforce(self):
       TranslatedList = []
@@ -60,9 +69,12 @@ class Decrypt:
          for char in str(Message):
 
             if char.isalpha():
-               num = ord(char) + key
-               num = num % 26
-               Translated += string.ascii_lowercase[num]
+               if char.isupper():
+                  Letter = GetLetter(string.ascii_uppercase,char,key)
+                  Translated += Letter
+               elif char.islower():
+                  Letter = GetLetter(string.ascii_lowercase,char,key)
+                  Translated += Letter
             else:
                Translated += char    
 
@@ -74,11 +86,15 @@ class Decrypt:
 
    def Standard(self):
       Translated = ""
+      key = N
       for char in str(Message):
          if char.isalpha():
-            num = ord(char) + int(N)
-            num = num % 26
-            Translated += string.ascii_lowercase[num]
+            if char.isupper():
+               Letter = GetLetter(string.ascii_uppercase,char,key)
+               Translated += Letter
+            elif char.islower():
+               Letter = GetLetter(string.ascii_lowercase,char,key)
+               Translated += Letter
          else:
             Translated += char
       Notify.Info(f"{N} : {Translated}")
