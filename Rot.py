@@ -12,8 +12,6 @@ Args = Parser.parse_args()
 Message = Args.m
 N = Args.N
 
-
-
 class Color:
     'Class for Colors to be used in Execution'
     PURPLE = '\033[95m'
@@ -75,7 +73,15 @@ class Decrypt:
          Notify.Info(f"{key} : {value}")
 
    def Standard(self):
-      print("x")
+      Translated = ""
+      for char in str(Message):
+         if char.isalpha():
+            num = ord(char) + int(N)
+            num = num % 26
+            Translated += string.ascii_lowercase[num]
+         else:
+            Translated += char
+      Notify.Info(f"{N} : {Translated}")
 
 
 def Main(Message,N):
