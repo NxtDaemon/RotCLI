@@ -43,15 +43,12 @@ python3 Rot.py -M "$(cat ../file)" -N 14
 python3 Rot.py -M "$(cat test.txt)" -B -L
 [*] - Printing Message with Highest Letter Goodness
 
-[🔑] -> 19 [43.06239999999993]
-        Paragraphs are the building blocks of papers. Many students define paragraphs in terms of length: a paragraph
-        is a group of at least five sentences, a paragraph is half a page long, etc. In reality, though, the unity and
-         coherence of ideas among sentences is what constitutes a paragraph. A paragraph is defined as “a group of sen
-        tences or a single sentence that forms a unit” (Lunsford and Connors 116). Length and appearance do not determ
-        ine whether a section in a paper is a paragraph. For instance, in some styles of writing, particularly journal
-        istic styles, a paragraph can be just one sentence long. Ultimately, a paragraph is a sentence or group of sen
-        tences that support one main idea. In this handout, we will refer to this as the “controlling idea,” because i
-        t controls what happens in the rest of the paragraph.
+[🔑] -> 19 [23.107599999999994]
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullam
+        co laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+         in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat c
+        upidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 [?] - Do you Want to Print the Next Value? q
 
